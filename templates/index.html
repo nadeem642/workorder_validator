@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Workorder Validator</title>
+</head>
+<body>
+  <h1>Workorder Validator (Groq-powered)</h1>
+
+  <form method="post">
+    <textarea name="work_order" rows="15" cols="100" placeholder="Paste your workorder here">{{ work_order_text }}</textarea><br><br>
+    <button type="submit">Validate</button>
+  </form>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      <ul>
+      {% for category, message in messages %}
+        <li style="color:red">{{ message }}</li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endwith %}
+
+  {% if result %}
+    <hr>
+    <h2>Validation Result</h2>
+    <div style="white-space: pre-wrap;">{{ result|safe }}</div>
+  {% endif %}
+</body>
+</html>
