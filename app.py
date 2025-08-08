@@ -85,5 +85,4 @@ def index():
 
     return render_template('index.html', result=result, work_order_text=work_order_text)
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+app = app
